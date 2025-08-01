@@ -28,3 +28,41 @@ window.addEventListener('DOMContentLoaded', () => {
 document.querySelector('.client-btn').addEventListener('click', () => {
   alert("Here's what our clients say! (This can open a modal or redirect.)");
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const card = document.getElementById("missionCard");
+  if (!card) return;
+
+  // Reveal on enter
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          card.classList.add("visible");
+          io.unobserve(card);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+  io.observe(card);
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".mission-card");
+  if (!cards.length) return;
+
+  const io = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  cards.forEach(card => {
+    io.observe(card);
+  });
+});
