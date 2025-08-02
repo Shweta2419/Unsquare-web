@@ -10,7 +10,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       });
     }
   });
-});
 
 // Animate headline on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -66,3 +65,4 @@ document.addEventListener("DOMContentLoaded", function () {
     io.observe(card);
   });
 });
+
